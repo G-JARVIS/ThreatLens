@@ -1,32 +1,39 @@
-ThreatLens – Security Information and Event Management System
+# ThreatLens: ML-Based Predictive Resource Management for Cloud Security Event Monitoring
 
-A Python-based Security Information and Event Management (SIEM) application that monitors security events, detects brute-force login attempts, generates security alerts, and provides an interactive security operations dashboard.
+A Python-based Cloud Security Information and Event Management (SIEM) application combining threat monitoring, brute-force attack detection, and **Machine Learning-driven Predictive Auto-Scaling** to dynamically provision cloud container resources 5 minutes ahead of security event surges.
 
-📌 Project Overview
+---
 
-ThreatLens is a lightweight security monitoring application designed to demonstrate the core functionality of a Security Information and Event Management system.
+## 📌 Project Overview
 
-It records login activities, monitors failed authentication attempts, identifies potential brute-force attacks, generates security alerts, and allows administrators to manage detected incidents.
+**ThreatLens** bridges the gap between **Cybersecurity Event Monitoring (SIEM)** and **Cloud Resource Management (CRM)**.
 
-The application uses SQLite for storing security events and alerts, Streamlit for the dashboard, and Docker for containerized deployment.
+Cybersecurity events (such as brute-force authentication storms and credential stuffing attacks) generate sudden, severe bursts in log ingestion rates. Traditional **reactive cloud auto-scaling** only reacts after CPU usage crosses high thresholds, resulting in a 1–3 minute container spin-up lag during which log processing queues back up and latency spikes.
 
-🎯 Objectives
+ThreatLens integrates a **Scikit-learn Random Forest Regressor** that forecasts security-event arrival rates **5 minutes ahead**, allowing cloud worker instances to be spun up proactively before the surge arrives.
 
-Centralize security event logging and monitoring.
+---
 
-Detect repeated failed login attempts from suspicious IP addresses.
+## 🎯 Core Objectives
 
-Generate automated security alerts.
+1. **Centralize SIEM Security Operations:** Monitor security events, failed authentication attempts, and automated high-severity alerts.
+2. **Predict Cloud Workload 5 Minutes Ahead:** Use historical time-series features (failed logins, CPU%, lag indicators) without data leakage to forecast event volume.
+3. **Proactive Cloud Auto-Scaling:** Auto-scale cloud container worker instances preemptively to absorb attack waves without latency spikes.
+4. **Comparative Evaluation:** Evaluate predictive scaling against reactive scaling on identical workloads using real metrics (MAE, RMSE, $R^2$, latency, cost, and energy).
+5. **Prediction Error Safeguards:** Implement a +10% safety margin buffer and reactive fallback mechanisms against under-prediction.
 
-Provide a dashboard for monitoring security activities.
+---
 
-Maintain and manage security incidents.
+## ✨ Features
 
-Demonstrate containerized deployment using Docker.
+### 1. Predictive Resource Management & ML (New)
+- **Workload Predictor:** 5-minute-ahead forecasting using Random Forest Regressor ($R^2 \approx 0.658$, $\text{MAE} = 33.2$ events/min).
+- **Auto-Scaling Engine:** Proactive vs Reactive cluster scaling simulation.
+- **Latency & Queue Modeling:** Demonstrates a **57.4% reduction in peak latency** during cyberattack surges.
+- **Cost & Energy Optimization:** 6.0% cloud cost savings with carbon-aware energy tracking.
+- **Interactive Surge Simulator:** Test instant 500% attack bursts in real time.
 
-✨ Features
-
-1. Security Dashboard
+### 2. Security Dashboard
 
 Total security events.
 
